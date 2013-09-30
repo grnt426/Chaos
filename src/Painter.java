@@ -12,8 +12,6 @@ public class Painter extends JPanel{
 	public void paint(Graphics g){
 		super.paint(g);
 
-		setBackground(Color.WHITE);
-
 		for(int i = 0; i < Chaos.ROW; i++){
 			for(int k = 0; k < Chaos.COL; k++){
 				g.setColor(board[i][k].draw());

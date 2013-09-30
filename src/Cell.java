@@ -25,6 +25,9 @@ public class Cell{
 		roll = i;
 	}
 
+	/**
+	 * Just lazily passing around references to get all neighbors.
+	 */
 	public void addNeighbor(Cell c){
 		if(neighbors.contains(c))
 			return;
@@ -33,7 +36,7 @@ public class Cell{
 	}
 
 	public void update(int iter){
-		if(iter == 0 && pass == dice[roll][3]){
+		if(iter ==  0 && pass == dice[roll][3]){
 			computeRoll();
 			pass = 0;
 		}

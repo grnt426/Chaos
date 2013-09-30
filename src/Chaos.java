@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.util.Arrays;
 
 /**
  * Author:      Grant Kurtz
@@ -23,13 +22,15 @@ public class Chaos{
 		// Initialize all tiles to similar values
 		for(int i = 0; i < ROW; i++){
 			for(int k = 0; k < COL; k++){
-				board[i][k] = new Cell((i + k) % 4);
+				board[i][k] = new Cell(0);
 				if(i > 0)
 					board[i][k].addNeighbor(board[i-1][k]);
 				if(k > 0)
 					board[i][k].addNeighbor(board[i][k-1]);
 			}
 		}
+
+//		board[ROW / 2][COL / 2].roll = 2;
 
 		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,7 +42,7 @@ public class Chaos{
 		window.setVisible(true);
 
 		while(true){
-			printBoard();
+			update();
 			window.repaint();
 			try{
 				Thread.sleep(500);
@@ -53,13 +54,11 @@ public class Chaos{
 		}
 	}
 
-	public void printBoard(){
-		System.out.println("\n\n");
+	public void update(){
 		for(Cell[] row : board){
 			for(Cell col : row){
 				col.update(iter);
 			}
-			System.out.println();
 		}
 	}
 }
